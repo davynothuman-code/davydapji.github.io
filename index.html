@@ -18,6 +18,9 @@
             background-color: #0b0f19;
             color: #ffffff;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Top Navbar */
@@ -34,6 +37,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
         .logo-badge {
@@ -95,6 +99,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
         .nav-actions a:hover {
@@ -123,12 +129,13 @@
             font-size: 13px;
             font-weight: 500;
             transition: 0.3s;
+            cursor: pointer;
+            padding-bottom: 4px;
         }
 
         .nav-links a.active, .nav-links a:hover {
             color: #ffbb00;
             border-bottom: 2px solid #ffbb00;
-            padding-bottom: 4px;
         }
 
         .auth-buttons {
@@ -143,6 +150,7 @@
             font-weight: 600;
             cursor: pointer;
             border: none;
+            transition: 0.2s;
         }
 
         .btn-login {
@@ -151,9 +159,17 @@
             border: 1px solid #ffbb00;
         }
 
+        .btn-login:hover {
+            background-color: rgba(255, 187, 0, 0.1);
+        }
+
         .btn-register {
             background: linear-gradient(135deg, #ff7e00, #ffbb00);
             color: #000;
+        }
+
+        .btn-register:hover {
+            opacity: 0.9;
         }
 
         /* Main Container */
@@ -161,13 +177,24 @@
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Page System Dynamic Styling */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
         }
 
         /* Hero Banner */
         .hero-banner {
             background: linear-gradient(90deg, #161c2d 0%, #1e1b38 50%, #281832 100%);
             border-radius: 12px;
-            padding: 30px 40px;
+            padding: 35px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -229,7 +256,9 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid #1f293d;
-            transition: transform 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
@@ -238,12 +267,10 @@
         }
 
         .product-img {
-            height: 160px;
+            height: 180px;
             background: linear-gradient(135deg, #252d42, #182030);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
         .product-img img {
@@ -252,12 +279,28 @@
             object-fit: cover;
         }
 
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffbb00;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            border: 1px solid #ffbb00;
+        }
+
         .product-info {
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .product-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             margin-bottom: 5px;
         }
@@ -267,6 +310,7 @@
             color: #9ca3af;
             line-height: 1.4;
             margin-bottom: 15px;
+            flex: 1;
         }
 
         .seller-info {
@@ -312,207 +356,7 @@
             cursor: pointer;
             text-align: center;
             font-weight: 600;
+            transition: 0.2s;
         }
 
-        .btn-buy {
-            flex: 1;
-            background: linear-gradient(135deg, #ff7e00, #ffbb00);
-            color: #000;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0a0e17;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #1a2235;
-            font-size: 13px;
-            color: #9ca3af;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-        }
-
-        .payment-methods {
-            display: flex;
-            gap: 10px;
-            font-size: 18px;
-        }
-
-        @media (max-width: 900px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .top-nav, .sub-nav {
-                padding: 15px 20px;
-            }
-            .search-bar {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Top Navbar -->
-    <header class="top-nav">
-        <div class="logo-area">
-            <div class="logo-badge">FF</div>
-            <div class="logo-text">
-                <h1>ACCOUNT HUB</h1>
-                <span>PASAR TERPERCAYA AKUN FREE FIRE ANDA</span>
-            </div>
-        </div>
-        <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search, Filters, Skin, Harga...">
-        </div>
-        <div class="nav-actions">
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart (0)</a>
-            <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
-        </div>
-    </header>
-
-    <!-- Sub Navbar -->
-    <nav class="sub-nav">
-        <ul class="nav-links">
-            <li><a href="#" class="active">BERANDA</a></li>
-            <li><a href="#">JUAL AKUN</a></li>
-            <li><a href="#">BELI AKUN</a></li>
-            <li><a href="#">BANTUAN</a></li>
-            <li><a href="#">MASUK/DAFTAR</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <button class="btn btn-login">LOGIN</button>
-            <button class="btn btn-register">REGISTER</button>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container">
-        
-        <!-- Hero Banner -->
-        <section class="hero-banner">
-            <div class="hero-text">
-                <h2>BELI & JUAL AKUN FF TERAMAN!</h2>
-                <p>Ribuan Pilihan Dari Penjual Terverifikasi</p>
-            </div>
-        </section>
-
-        <!-- Filter Bar -->
-        <div class="filter-section">
-            <div class="filter-box">
-                <select>
-                    <option>RANK: ALL, HEROIC, GRANDMASTER</option>
-                    <option>Heroic</option>
-                    <option>Grandmaster</option>
-                </select>
-            </div>
-            <div class="filter-box">
-                <select>
-                    <option>SKIN: BUNNY, M1014, EVO GUNS</option>
-                    <option>Evo Guns</option>
-                    <option>Bundle Langka</option>
-                </select>
-            </div>
-            <div class="filter-box">
-                <input type="text" placeholder="HARGA: MIN - MAX">
-            </div>
-        </div>
-
-        <!-- Product Grid -->
-        <div class="product-grid">
-            
-            <!-- Item 1 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fa-solid fa-gamepad fa-3x" style="color: #ffbb00;"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">Akun #10245</div>
-                    <div class="product-desc">RANK: HEROIC | LEVEL: 78 | SKIN BUNNY, M1014 | EVO GUNS LVL 7 | PASSPORT BUNDLE | 18SK DM</div>
-                    <div class="seller-info">
-                        <div class="seller-name"><i class="fa-solid fa-circle-user"></i> ProGamer_99' <span>★ 4.8</span></div>
-                        <div class="product-price">Rp 750.000</div>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn-detail">LIHAT DETAIL</button>
-                        <button class="btn-buy">BELI SEKARANG</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fa-solid fa-gamepad fa-3x" style="color: #ffbb00;"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">Akun #10246</div>
-                    <div class="product-desc">RANK: GRANDMASTER | LEVEL: 80 | FULL INCUBATOR | EVO GUNS MAX | SG2 UNGU</div>
-                    <div class="seller-info">
-                        <div class="seller-name"><i class="fa-solid fa-circle-user"></i> RizkyFF_Store <span>★ 5.0</span></div>
-                        <div class="product-price">Rp 1.200.000</div>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn-detail">LIHAT DETAIL</button>
-                        <button class="btn-buy">BELI SEKARANG</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fa-solid fa-gamepad fa-3x" style="color: #ffbb00;"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">Akun #10247</div>
-                    <div class="product-desc">RANK: HEROIC | LEVEL: 72 | SKIN HEROIC LAMA | SCAR TITAN | BUNDLE VETERAN</div>
-                    <div class="seller-info">
-                        <div class="seller-name"><i class="fa-solid fa-circle-user"></i> SultanFF <span>★ 4.9</span></div>
-                        <div class="product-price">Rp 500.000</div>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn-detail">LIHAT DETAIL</button>
-                        <button class="btn-buy">BELI SEKARANG</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Terms</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="payment-methods">
-            <span style="font-size: 12px; color: #9ca3af; align-self: center;">Metode Pembayaran:</span>
-            <i class="fa-solid
+        .btn
