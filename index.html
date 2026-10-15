@@ -3,334 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pahlawan Nasional Indonesia</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Profil 5 Tokoh Pahlawan Nasional Indonesia</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+        :root {
+            --primary-color: #b71c1c;
+            --secondary-color: #d32f2f;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
         }
 
         body {
-            background-color: #121519;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
 
-        /* Header Navigation */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background-color: #121519;
+            background: linear-gradient(135deg, var(--primary-color), #880e4f);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-        }
-
-        nav ul li a {
-            color: #a0a5b1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: #ffffff;
-        }
-
-        /* Container Main */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            flex: 1;
-        }
-
-        /* Banner Hero */
-        .banner {
-            background: linear-gradient(135deg, #1c222b, #2a323d);
-            border-radius: 12px;
-            padding: 30px 40px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #2d3542;
-        }
-
-        .banner-text h1 {
+        header h1 {
+            margin: 0;
             font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.2;
-            text-transform: uppercase;
         }
 
-        .banner-text p {
-            color: #8f96a3;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            font-weight: 600;
-            letter-spacing: 2px;
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        /* Card Grid Layout */
-        .grid-container {
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        /* Card Style */
         .card {
-            background-color: #1a1f26;
-            border-radius: 10px;
-            display: flex;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 1px solid #28303d;
-            height: 160px;
-        }
-
-        .card-img {
-            width: 40%;
-            object-fit: cover;
-            background-color: #2c3440;
-        }
-
-        .card-body {
-            width: 60%;
-            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 6px;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-img-container:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-transform: uppercase;
-            line-height: 1.1;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .card-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .card-desc {
-            font-size: 0.75rem;
-            color: #9aa1b1;
-            margin-top: 5px;
-            line-height: 1.3;
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .btn-detail {
-            align-self: flex-start;
-            background-color: #e58e35;
-            color: #000000;
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            padding: 6px 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .btn-detail:hover {
-            background-color: #f3a048;
-        }
-
-        /* Special Card Action */
-        .card-action {
-            background-color: #1a1f26;
-            border: 2px solid #e58e35;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 160px;
-        }
-
-        .btn-action-all {
-            background-color: #e58e35;
-            color: #000000;
-            border: none;
-            padding: 12px 24px;
-            font-size: 0.85rem;
-            font-weight: 800;
+            padding: 0.75rem 1rem;
             border-radius: 6px;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background 0.3s;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            text-align: center;
+            text-decoration: none;
         }
 
-        .btn-action-all:hover {
-            background-color: #f3a048;
+        .btn:hover {
+            background-color: var(--secondary-color);
         }
 
-        /* Footer */
+        /* Modal / Popup Detail */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .modal-body h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 0.75rem;
-            color: #6b7280;
-            border-top: 1px solid #1a1f26;
-            margin-top: 40px;
+            padding: 2rem;
+            background-color: #333;
+            color: white;
+            margin-top: 3rem;
+            font-size: 0.9rem;
         }
 
-        footer .links {
-            margin-bottom: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        footer .links a {
-            color: #9aa1b1;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <header>
-        <div class="logo">Pahlawan Nasional Indonesia</div>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Beranda</a></li>
-                <li><a href="#">Daftar Pahlawan</a></li>
-                <li><a href="#">Galeri</a></li>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Kontak</a></li>
-            </ul>
-        </nav>
+        <h1>Tokoh Pahlawan Nasional Indonesia</h1>
+        <p>Mengenal jasa dan biografi singkat para pejuang kemerdekaan Indonesia</p>
     </header>
 
-    <!-- Content Container -->
     <div class="container">
-        
-        <!-- Hero Banner -->
-        <div class="banner">
-            <div class="banner-text">
-                <p>PAHLAWAN NASIONAL INDONESIA:</p>
-                <h1>5 Tokoh Inspiratif</h1>
+        <!-- Tokoh 1 -->
+        <div class="card">
+            <div class="card-img-container" onclick="openModal('modalSoekarno')">
+                <img src="watermarked_img_11294682957803601600.jpg" alt="Ir. Soekarno">
+                <div class="img-overlay">Klik untuk detail</div>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Ir. Soekarno</h3>
+                <div class="card-role">Proklamator & Presiden Pertama RI</div>
+                <p class="card-desc">Bung Karno adalah tokoh penting yang memproklamirkan kemerdekaan Indonesia bersama Mohammad Hatta pada 17 Agustus 1945.</p>
+                <button class="btn" onclick="openModal('modalSoekarno')">Lihat Biografi</button>
             </div>
         </div>
 
-        <!-- Grid Cards Pahlawan -->
-        <div class="grid-container">
-
-            <!-- Card 1: Soekarno -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150x200?text=Soekarno" alt="Soekarno" class="card-img">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Soekarno</div>
-                        <div class="card-desc">Proklamator Kemerdekaan, Presiden Pertama RI</div>
-                    </div>
-                    <a href="#" class="btn-detail">Baca Selengkapnya</a>
-                </div>
+        <!-- Tokoh 2 -->
+        <div class="card">
+            <div class="card-img-container" onclick="openModal('modalHatta')">
+                <img src="watermarked_img_8860951187551268356.jpg" alt="Drs. H. Mohammad Hatta">
+                <div class="img-overlay">Klik untuk detail</div>
             </div>
-
-            <!-- Card 2: Mohammad Hatta -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150x200?text=Hatta" alt="Mohammad Hatta" class="card-img">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Mohammad Hatta</div>
-                        <div class="card-desc">Wakil Presiden Pertama RI, Bapak Koperasi Indonesia</div>
-                    </div>
-                    <a href="#" class="btn-detail">Baca Selengkapnya</a>
-                </div>
+            <div class="card-content">
+                <h3 class="card-title">Drs. H. Mohammad Hatta</h3>
+                <div class="card-role">Proklamator & Wakil Presiden Pertama RI</div>
+                <p class="card-desc">Bapak Koperasi Indonesia yang dikenal dengan pemikiran ekonominya yang kerakyatan serta integritas moral yang sangat tinggi.</p>
+                <button class="btn" onclick="openModal('modalHatta')">Lihat Biografi</button>
             </div>
+        </div>
 
-            <!-- Card 3: Cut Nyak Dien -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150x200?text=Cut+Nyak+Dien" alt="Cut Nyak Dien" class="card-img">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Cut Nyak Dien</div>
-                        <div class="card-desc">Pejuang Wanita dari Aceh</div>
-                    </div>
-                    <a href="#" class="btn-detail">Baca Selengkapnya</a>
-                </div>
+        <!-- Tokoh 3 -->
+        <div class="card">
+            <div class="card-img-container" onclick="openModal('modalKartini')">
+                <img src="watermarked_img_11428694052046482632.jpg" alt="R.A. Kartini">
+                <div class="img-overlay">Klik untuk detail</div>
             </div>
-
-            <!-- Card 4: Kartini -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150x200?text=Kartini" alt="Kartini" class="card-img">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Kartini</div>
-                        <div class="card-desc">Pelopor Emansipasi Wanita</div>
-                    </div>
-                    <a href="#" class="btn-detail">Baca Selengkapnya</a>
-                </div>
+            <div class="card-content">
+                <h3 class="card-title">R.A. Kartini</h3>
+                <div class="card-role">Pelopor Kebangkitan Perempuan Indonesia</div>
+                <p class="card-desc">Tokoh emansipasi wanita yang memperjuangkan kesetaraan hak dan akses pendidikan bagi kaum perempuan di Nusantara.</p>
+                <button class="btn" onclick="openModal('modalKartini')">Lihat Biografi</button>
             </div>
+        </div>
 
-            <!-- Card 5: Sudirman -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150x200?text=Sudirman" alt="Sudirman" class="card-img">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Sudirman</div>
-                        <div class="card-desc">Panglima Besar Tentara Nasional Indonesia</div>
-                    </div>
-                    <a href="#" class="btn-detail">Baca Selengkapnya</a>
-                </div>
+        <!-- Tokoh 4 -->
+        <div class="card">
+            <div class="card-img-container" onclick="openModal('modalKiHajar')">
+                <img src="watermarked_img_12756556704088005184.jpg" alt="Ki Hajar Dewantara">
+                <div class="img-overlay">Klik untuk detail</div>
             </div>
-
-            <!-- Action Card: Lihat Semua -->
-            <div class="card-action">
-                <button class="btn-action-all">Lihat Semua Pahlawan</button>
+            <div class="card-content">
+                <h3 class="card-title">Ki Hajar Dewantara</h3>
+                <div class="card-role">Bapak Pendidikan Nasional</div>
+                <p class="card-desc">Pendiri perguruan Taman Siswa yang mencetuskan semboyan pendidikan terkenal: <em>Tut Wuri Handayani</em>.</p>
+                <button class="btn" onclick="openModal('modalKiHajar')">Lihat Biografi</button>
             </div>
+        </div>
 
+        <!-- Tokoh 5 -->
+        <div class="card">
+            <div class="card-img-container" onclick="openModal('modalSudirman')">
+                <img src="watermarked_img_15802412464301151211.jpg" alt="Jenderal Sudirman">
+                <div class="img-overlay">Klik untuk detail</div>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Jenderal Sudirman</h3>
+                <div class="card-role">Panglima Besar TNI Pertama</div>
+                <p class="card-desc">Jenderal gerilya legendaris yang tetap memimpin pasukan meskipun dalam keadaan sakit parah demi mempertahankan kemerdekaan.</p>
+                <button class="btn" onclick="openModal('modalSudirman')">Lihat Biografi</button>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="links">
-            <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+    <!-- MODAL DETAIL TOKOH -->
+    <div id="modalSoekarno" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modalSoekarno')">&times;</span>
+            <div class="modal-body">
+                <h2>Ir. Soekarno</h2>
+                <p><strong>Peran:</strong> Proklamator Kemerdekaan & Presiden Pertama Republik Indonesia</p>
+                <p>Ir. Soekarno atau yang biasa dipanggil Bung Karno, lahir di Blitar, Jawa Timur, 6 Juni 1901. Beliau adalah tokoh yang merumuskan Pancasila dan memimpin bangsa Indonesia melewati masa-masa awal kemerdekaan dengan penuh karisma dan pidato-pidato yang membakar semangat nasionalisme rakyat.</p>
+            </div>
         </div>
-        <div>&copy; 2024 PahlawanNasional.id</div>
+    </div>
+
+    <div id="modalHatta" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modalHatta')">&times;</span>
+            <div class="modal-body">
+                <h2>Drs. H. Mohammad Hatta</h2>
+                <p><strong>Peran:</strong> Proklamator Kemerdekaan & Wakil Presiden Pertama RI</p>
+                <p>Bung Hatta lahir di Bukittinggi, Sumatra Barat, 12 Agustus 1902. Beliau dikenal sebagai negarawan yang jujur, sederhana, dan pemikir ulung di bidang ekonomi kerakyatan serta koperasi yang menjadi sokoguru perekonomian Indonesia.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalKartini" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modalKartini')">&times;</span>
+            <div class="modal-body">
+                <h2>R.A. Kartini</h2>
+                <p><strong>Peran:</strong> Pelopor Emansipasi Wanita</p>
+                <p>Raden Adjeng Kartini lahir di Jepara, 21 April 1879. Melalui surat-suratnya kepada teman-temannya di Belanda (yang kemudian dibukukan menjadi <em>Habis Gelap Terbitlah Terang</em>), beliau menginspirasi kaum perempuan Indonesia untuk menuntut ilmu dan mendapatkan hak yang setara.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalKiHajar" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modalKiHajar')">&times;</span>
+            <div class="modal-body">
+                <h2>Ki Hajar Dewantara</h2>
+                <p><strong>Peran:</strong> Bapak Pendidikan Nasional</p>
+                <p>Lahir dengan nama Raden Mas Soewardi Soerjaningrat di Yogyakarta, 2 Mei 1889. Beliau mendirikan Taman Siswa sebagai wujud perlawanan terhadap sistem pendidikan kolonial kolonial, serta mengenalkan filosofi kepemimpinan dan pendidikan yang sangat masyhur.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalSudirman" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modalSudirman')">&times;</span>
+            <div class="modal-body">
+                <h2>Jenderal Sudirman</h2>
+                <p><strong>Peran:</strong> Panglima Besar TNI Pertama</p>
+                <p>Jenderal Sudirman lahir di Purbalingga, 24 Januari 1916. Beliau adalah teladan pemimpin militer sejati yang memimpin perang gerilya melawan agresi militer Belanda meskipun harus ditandu karena menderita penyakit paru-paru (tuberkulosis).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mengenal Tokoh Pahlawan Nasional Indonesia. Dibuat dengan rapi & interaktif.</p>
     </footer>
 
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Menutup modal jika pengguna mengklik di luar area konten modal
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
