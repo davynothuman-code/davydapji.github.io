@@ -73,16 +73,12 @@
             <!-- Navigation Links -->
             <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-600">
                 <a href="#pahlawan" class="hover:text-brand-red transition-colors">Daftar Pahlawan</a>
+                <a href="#galeri" class="hover:text-brand-red transition-colors">Galeri Foto</a>
                 <a href="#tentang" class="hover:text-brand-red transition-colors">Tentang Website</a>
                 <a href="https://github.com" target="_blank" class="px-5 py-2.5 bg-brand-red text-white rounded-full hover:bg-brand-redlight transition-all shadow-md shadow-brand-red/20 flex items-center gap-2">
                     <i class="fa-brands fa-github text-base"></i> GitHub Pages
                 </a>
             </nav>
-
-            <!-- Mobile Menu Button -->
-            <button id="menuBtn" class="lg:hidden p-2 text-slate-600 hover:text-brand-red focus:outline-none">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
         </div>
 
         <!-- Mobile Search Bar -->
@@ -143,7 +139,7 @@
 
         <!-- Grid Cards Pahlawan -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="heroesGrid">
-            <!-- Pahlawan Cards Rendered By JavaScript -->
+            <!-- Rendered By JS -->
         </div>
 
         <!-- No Results Found -->
@@ -156,6 +152,22 @@
         </div>
     </main>
 
+    <!-- SECTION GALERI FOTO INTERAKTIF -->
+    <section id="galeri" class="bg-slate-100 py-16 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-red text-xs font-bold uppercase tracking-widest bg-red-100 px-3 py-1 rounded-full">Galeri Pahlawan</span>
+                <h2 class="font-serif text-3xl font-bold text-slate-900 mt-3 mb-2">Pilih Foto Untuk Melihat Detail</h2>
+                <p class="text-slate-600 text-sm">Klik tombol interaktif di bawah setiap foto untuk membaca kisah dan biografi lengkap para tokoh pahlawan.</p>
+            </div>
+
+            <!-- Grid Galeri -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="galleryGrid">
+                <!-- Rendered By JS -->
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION TENTANG -->
     <section id="tentang" class="bg-white border-t border-slate-200 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,9 +179,9 @@
                         Website ini dibuat menggunakan HTML5, Tailwind CSS, dan JavaScript murni. Sangat ringan, terstruktur, responsif untuk perangkat mobile, serta mudah dimodifikasi sesuai kebutuhan Anda.
                     </p>
                     <div class="flex items-center gap-4 text-xs sm:text-sm text-slate-400 font-medium">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> No Framework Build</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Tailwind CDN</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Fast Loading</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> No Framework</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Tailwind CSS</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> GitHub Ready</span>
                     </div>
                 </div>
                 <div class="z-10 flex-shrink-0">
@@ -277,7 +289,6 @@
 
     <!-- JAVASCRIPT DATA & LOGIC -->
     <script>
-        // Data 5 Pahlawan Indonesia dengan Link Gambar Langsung Muncul
         const heroes = [
             {
                 id: 'soekarno',
@@ -388,7 +399,7 @@
             noResults.classList.add('hidden');
             grid.innerHTML = data.map(hero => `
                 <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group transform hover:-translate-y-1">
-                    <div class="relative h-72 overflow-hidden bg-slate-100">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 cursor-pointer" onclick="openModal('${hero.id}')">
                         <img src="${hero.image}" alt="${hero.name}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
                         <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-sm">
@@ -403,6 +414,28 @@
                         </p>
                         <button onclick="openModal('${hero.id}')" class="w-full py-3 bg-slate-100 hover:bg-brand-red hover:text-white text-slate-800 font-semibold text-sm rounded-xl transition-colors duration-200 flex items-center justify-center gap-2">
                             Lihat Profil Lengkap <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Galeri Interaktif Foto Pahlawan
+        function renderGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = heroes.map(hero => `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden bg-slate-100 cursor-pointer" onclick="openModal('${hero.id}')">
+                        <img src="${hero.image}" alt="${hero.name}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow justify-between text-center">
+                        <div>
+                            <h4 class="font-serif font-bold text-sm text-slate-900 line-clamp-1">${hero.name}</h4>
+                            <span class="text-[11px] text-slate-500 block mt-0.5">${hero.origin}</span>
+                        </div>
+                        <button onclick="openModal('${hero.id}')" class="mt-4 w-full py-2 bg-brand-red/10 hover:bg-brand-red text-brand-red hover:text-white font-semibold text-xs rounded-xl transition-colors duration-200 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-eye text-[10px]"></i> Lihat Detail
                         </button>
                     </div>
                 </div>
@@ -481,6 +514,7 @@
 
         // Initial Render
         renderHeroes(heroes);
+        renderGallery();
     </script>
 </body>
 </html>
