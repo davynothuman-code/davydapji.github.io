@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>Pahlawan Nasional Indonesia - Edukasi Sejarah</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -158,7 +159,7 @@
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-brand-red text-xs font-bold uppercase tracking-widest bg-red-100 px-3 py-1 rounded-full">Galeri Pahlawan</span>
                 <h2 class="font-serif text-3xl font-bold text-slate-900 mt-3 mb-2">Pilih Foto Untuk Melihat Detail</h2>
-                <p class="text-slate-600 text-sm">Klik tombol interaktif di bawah setiap foto untuk membaca kisah dan biografi lengkap para tokoh pahlawan.</p>
+                <p class="text-slate-600 text-sm">Klik tombol di bawah foto untuk langsung membuka biografi lengkap.</p>
             </div>
 
             <!-- Grid Galeri -->
@@ -216,7 +217,7 @@
             
             <!-- Modal Header / Image Banner -->
             <div class="relative h-64 sm:h-80 bg-slate-800 flex-shrink-0">
-                <img id="modalImg" src="" alt="Foto Pahlawan" class="w-full h-full object-cover object-top opacity-90">
+                <img id="modalImg" src="" alt="Foto Pahlawan" crossorigin="anonymous" referrerpolicy="no-referrer" class="w-full h-full object-cover object-top opacity-90">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                 
                 <!-- Close Button -->
@@ -299,7 +300,7 @@
                 birth: 'Surabaya, 6 Juni 1901',
                 death: 'Jakarta, 21 Juni 1970',
                 origin: 'Jawa Timur',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Presiden_Sukarno.jpg/500px-Presiden_Sukarno.jpg',
+                image: 'https://images.wsj.net/im-605809?width=700&size=1.5',
                 quote: 'Gantungkan cita-citamu setinggi langit! Bermimpilah setinggi langit. Jika engkau jatuh, engkau akan jatuh di antara bintang-bintang.',
                 bio: 'Ir. Soekarno adalah Presiden pertama Republik Indonesia yang menjabat pada periode 1945–1967. Beliau merupakan pejuang pergerakan kemerdekaan yang memainkan peranan sentral dalam membebaskan bangsa Indonesia dari penjajahan Belanda.\n\nBersama Mohammad Hatta, beliau memproklamasikan Kemerdekaan Indonesia pada tanggal 17 Agustus 1945. Soekarno juga tercatat sebagai pencetus konsep Pancasila sebagai dasar negara Indonesia.',
                 achievements: [
@@ -318,7 +319,7 @@
                 birth: 'Bukittinggi, 12 Agustus 1902',
                 death: 'Jakarta, 14 Maret 1980',
                 origin: 'Sumatera Barat',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/VP_Hatta.jpg/500px-VP_Hatta.jpg',
+                image: 'https://c.ndtvimg.com/2020-08/94qllts8_mohammad-hatta_625x300_12_August_20.jpg',
                 quote: 'Hanya ada satu tanah air yang bernama Tanah Air Indonesia. Tanah air ini dibangun dengan perbuatan, dan perbuatan itu adalah perbuatan kita.',
                 bio: 'Mohammad Hatta, atau populer disapa Bung Hatta, adalah negarawan dan ekonom terkemuka Indonesia. Beliau menjabat sebagai Wakil Presiden Indonesia pertama mendampingi Soekarno.\n\nBung Hatta dikenal sangat disiplin, gemar membaca, dan memiliki komitmen tinggi terhadap kesejahteraan rakyat kecil melalui gerakan koperasi sehingga dianugerahi gelar Bapak Koperasi Indonesia.',
                 achievements: [
@@ -337,9 +338,9 @@
                 birth: 'Lampadang, Aceh, 1848',
                 death: 'Sumedang, 6 November 1908',
                 origin: 'Aceh',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cut_Nyak_Dhien.jpg/500px-Cut_Nyak_Dhien.jpg',
+                image: 'https://asset.kompas.com/crops/O2W3d1W6N9vvh95H9YtJ4A9jGbg=/0x0:780x520/750x500/data/photo/2021/11/05/618520d2cb2d2.jpg',
                 quote: 'Dalam menghadapi musuh, kita tidak boleh gentar sedikitpun. Selama darah masih mengalir, perjuangan belum usai!',
-                bio: 'Cut Nyak Dien adalah seorang pahlawan nasional Indonesia wanita yang berasal dari Aceh. Beliau memimpin pasukan gerilya melawan tentara kolonial Belanda selama Perang Aceh.\n\nSetalah suaminya Teuku Umar gugur dalam pertempuran, Cut Nyak Dien melanjutkan kepemimpinan perlawanan gerilya di pedalaman Aceh meskipun kondisinya semakin rentan dan matanya terganggu.',
+                bio: 'Cut Nyak Dien adalah seorang pahlawan nasional Indonesia wanita yang berasal dari Aceh. Beliau memimpin pasukan gerilya melawan tentara kolonial Belanda selama Perang Aceh.\n\nSetelah suaminya Teuku Umar gugur dalam pertempuran, Cut Nyak Dien melanjutkan kepemimpinan perlawanan gerilya di pedalaman Aceh meskipun kondisinya semakin rentan dan matanya terganggu.',
                 achievements: [
                     'Memimpin perang gerilya menentang penjajahan Belanda di Aceh.',
                     'Menjadi simbol keberanian dan kegigihan prajurit wanita Nusantara.',
@@ -355,7 +356,7 @@
                 birth: 'Yogyakarta, 11 November 1785',
                 death: 'Makassar, 8 Januari 1855',
                 origin: 'D.I. Yogyakarta',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Pangeran_Diponegoro.jpg/500px-Pangeran_Diponegoro.jpg',
+                image: 'https://asset.kompas.com/crops/9hNUpJmJ8G7PjF84I3Vd5c3qGmg=/0x0:0x0/750x500/data/photo/2020/11/11/5fa74313b29c2.jpg',
                 quote: 'Sedikitpun kita tidak boleh tunduk pada kezaliman. Kehormatan dan tanah air adalah harga mati.',
                 bio: 'Pangeran Diponegoro adalah putra sulung Sultan Hamengkubuwono III. Beliau memimpin Perang Jawa (1825–1830) melawan pemerintah Hindia Belanda.\n\nPerang ini tercatat sebagai salah satu pertempuran terbesar dan paling banyak menelan korban di pihak Belanda sepanjang sejarah kolonialisme di pulau Jawa.',
                 achievements: [
@@ -373,7 +374,7 @@
                 birth: 'Yogyakarta, 2 Mei 1889',
                 death: 'Yogyakarta, 26 April 1959',
                 origin: 'D.I. Yogyakarta',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ki_Hadjar_Dewantara_near_1950.jpg/500px-Ki_Hadjar_Dewantara_near_1950.jpg',
+                image: 'https://asset.kompas.com/crops/4qY7gM_0oNl1H2kE8f1yU_x2Z4g=/0x0:0x0/750x500/data/photo/2020/05/01/5eac176d6c97a.jpg',
                 quote: 'Ing Ngarso Sung Tulodo, Ing Madyo Mangun Karso, Tut Wuri Handayani. (Di depan memberi teladan, di tengah memberi semangat, di belakang memberi dorongan).',
                 bio: 'Ki Hadjar Dewantara (bernama asli Raden Mas Soewardi Soeryaningrat) adalah pelopor pendidikan bagi kaum pribumi Indonesia pada masa penjajahan Belanda.\n\nBeliau mendirikan lembaga pendidikan Taman Siswa pada tahun 1922 yang memberikan kesempatan belajar bagi rakyat biasa. Hari kelahirannya, 2 Mei, diperingati sebagai Hari Pendidikan Nasional di Indonesia.',
                 achievements: [
@@ -384,6 +385,8 @@
                 ]
             }
         ];
+
+        const defaultFallbackImage = 'https://via.placeholder.com/600x400/991b1b/ffffff?text=Pahlawan+Indonesia';
 
         // Render Cards Pahlawan
         function renderHeroes(data) {
@@ -399,8 +402,13 @@
             noResults.classList.add('hidden');
             grid.innerHTML = data.map(hero => `
                 <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group transform hover:-translate-y-1">
-                    <div class="relative h-72 overflow-hidden bg-slate-100 cursor-pointer" onclick="openModal('${hero.id}')">
-                        <img src="${hero.image}" alt="${hero.name}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    <div class="relative h-72 overflow-hidden bg-slate-200 cursor-pointer" onclick="openModal('${hero.id}')">
+                        <img src="${hero.image}" 
+                             alt="${hero.name}" 
+                             crossorigin="anonymous" 
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null;this.src='${defaultFallbackImage}';"
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
                         <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-sm">
                             ${hero.categoryLabel}
@@ -425,8 +433,13 @@
             const galleryGrid = document.getElementById('galleryGrid');
             galleryGrid.innerHTML = heroes.map(hero => `
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col group">
-                    <div class="relative h-48 overflow-hidden bg-slate-100 cursor-pointer" onclick="openModal('${hero.id}')">
-                        <img src="${hero.image}" alt="${hero.name}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
+                    <div class="relative h-48 overflow-hidden bg-slate-200 cursor-pointer" onclick="openModal('${hero.id}')">
+                        <img src="${hero.image}" 
+                             alt="${hero.name}" 
+                             crossorigin="anonymous" 
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null;this.src='${defaultFallbackImage}';"
+                             class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
                     </div>
                     <div class="p-4 flex flex-col flex-grow justify-between text-center">
