@@ -1,771 +1,486 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ensiklopedia Pahlawan Nasional Indonesia</title>
+    <title>Pahlawan Nasional Indonesia - Edukasi Sejarah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#991B1B',
+                            redlight: '#DC2626',
+                            gold: '#D97706',
+                            dark: '#0F172A',
+                            cream: '#FEF3C7',
+                            bg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --red-primary: #990000;
-            --red-dark: #660000;
-            --bg-light: #f4f5f7;
-            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#991b1b 0.75px, transparent 0.75px), radial-gradient(#991b1b 0.75px, #0f172a 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: #222;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Top Header Navigation */
-        .top-header {
-            background-color: var(--red-primary);
-            color: white;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .brand-logo {
-            width: 38px;
-            height: auto;
-        }
-
-        .brand-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 6px 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            border-radius: 3px;
-            text-transform: uppercase;
-            transition: background-color 0.2s;
-            cursor: pointer;
-        }
-
-        .nav-links a.active, .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Search Section Header */
-        .search-header-bar {
-            background-color: var(--red-dark);
-            padding: 14px;
-            text-align: center;
-        }
-
-        .search-box-wrapper {
-            display: inline-flex;
-            width: 100%;
-            max-width: 550px;
-            background: white;
-            border-radius: 3px;
+        .modal-active {
             overflow: hidden;
-        }
-
-        .search-box-wrapper input {
-            width: 100%;
-            padding: 8px 14px;
-            border: none;
-            outline: none;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .search-box-wrapper button {
-            background: var(--red-dark);
-            border: none;
-            color: white;
-            padding: 0 16px;
-            cursor: pointer;
-        }
-
-        .main-container {
-            max-width: 1100px;
-            margin: 24px auto;
-            padding: 0 16px;
-            flex: 1;
-            width: 100%;
-        }
-
-        /* Page View Control */
-        .page-section {
-            display: none;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        .section-heading {
-            text-align: center;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            color: #111;
-        }
-
-        /* Hero Cards Grid */
-        .heroes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .hero-card {
-            background: white;
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.2s;
-        }
-
-        .hero-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .img-container {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-        }
-
-        .hero-name {
-            font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .btn-profile {
-            width: 100%;
-            background-color: var(--red-primary);
-            color: white;
-            border: none;
-            padding: 8px 0;
-            font-size: 0.85rem;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: background-color 0.2s;
-            text-decoration: none;
-        }
-
-        .btn-profile:hover {
-            background-color: var(--red-dark);
-        }
-
-        /* Quiz Box Section */
-        .quiz-card {
-            background: white;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 30px;
-        }
-
-        .quiz-question-text {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            color: var(--red-dark);
-        }
-
-        .quiz-answers-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .quiz-option-btn {
-            background: white;
-            border: 1px solid #aaa;
-            padding: 12px 16px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
-        }
-
-        .quiz-option-btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        .quiz-option-btn.selected {
-            background: var(--red-primary);
-            color: white;
-            border-color: var(--red-primary);
-        }
-
-        .btn-action-quiz {
-            background: var(--red-primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .btn-action-quiz:hover {
-            background-color: var(--red-dark);
-        }
-
-        /* Detail Page Styling */
-        .detail-card {
-            background: white;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .detail-header {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            align-items: center;
-        }
-
-        .detail-img {
-            width: 180px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        .detail-info h2 {
-            color: var(--red-primary);
-            margin-bottom: 10px;
-        }
-
-        .detail-info p {
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-        }
-
-        .detail-section {
-            margin-top: 16px;
-        }
-
-        .detail-section h4 {
-            color: var(--red-dark);
-            margin-bottom: 6px;
-            border-bottom: 2px solid var(--red-primary);
-            padding-bottom: 4px;
-            display: inline-block;
-        }
-
-        .detail-section p {
-            line-height: 1.6;
-            margin-top: 6px;
-            font-size: 0.95rem;
-        }
-
-        .btn-back {
-            background: #555;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        .btn-back:hover {
-            background: #333;
-        }
-
-        /* About Page */
-        .about-card {
-            background: white;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: var(--card-shadow);
-            line-height: 1.6;
-        }
-
-        .about-card h3 {
-            color: var(--red-primary);
-            margin-bottom: 12px;
-        }
-
-        .about-card p {
-            margin-bottom: 12px;
-        }
-
-        /* Back to Top Floating Button */
-        .btn-floating-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--red-primary);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            z-index: 99;
-        }
-
-        .btn-floating-top:hover {
-            background: var(--red-dark);
-        }
-
-        footer {
-            background: var(--red-dark);
-            color: white;
-            text-align: center;
-            padding: 14px;
-            font-size: 0.8rem;
-            margin-top: auto;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .heroes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .heroes-grid {
-                grid-template-columns: 1fr;
-            }
-            .top-header {
-                flex-direction: column;
-                align-items: center;
-            }
-            .detail-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
         }
     </style>
 </head>
-<body>
+<body class="bg-brand-bg text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Header Navigation -->
-    <header class="top-header">
-        <div class="brand-container" onclick="navigateTo('home')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/National_emblem_of_Indonesia_Garuda_Pancasila.svg" alt="Garuda" class="brand-logo">
-            <div class="brand-title">
-                Ensiklopedia Pahlawan<br>Nasional Indonesia
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-red/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid me-1 fa-shield-halved"></i>
+                </div>
+                <div>
+                    <span class="block font-serif text-lg font-bold tracking-wider text-slate-900 group-hover:text-brand-red transition-colors">PAHLAWAN</span>
+                    <span class="block text-xs font-semibold tracking-widest text-brand-gold uppercase -mt-1">INDONESIA</span>
+                </div>
+            </a>
+
+            <!-- Search Bar Desktop -->
+            <div class="hidden md:flex items-center flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" placeholder="Cari nama, peran, atau daerah..." 
+                        class="w-full pl-11 pr-4 py-2.5 bg-slate-100 hover:bg-slate-200/70 focus:bg-white text-sm rounded-full border border-transparent focus:border-brand-red focus:outline-none transition-all duration-200">
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#pahlawan" class="hover:text-brand-red transition-colors">Daftar Pahlawan</a>
+                <a href="#tentang" class="hover:text-brand-red transition-colors">Tentang Website</a>
+                <a href="https://github.com" target="_blank" class="px-5 py-2.5 bg-brand-red text-white rounded-full hover:bg-brand-redlight transition-all shadow-md shadow-brand-red/20 flex items-center gap-2">
+                    <i class="fa-brands fa-github text-base"></i> GitHub Pages
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="lg:hidden p-2 text-slate-600 hover:text-brand-red focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <div class="md:hidden px-4 pb-4">
+            <div class="relative w-full">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="mobileSearchInput" placeholder="Cari nama pahlawan..." 
+                    class="w-full pl-11 pr-4 py-2 bg-slate-100 text-sm rounded-full border border-transparent focus:border-brand-red focus:outline-none">
             </div>
         </div>
-        <ul class="nav-links">
-            <li><a id="nav-home" class="active" onclick="navigateTo('home')">Beranda</a></li>
-            <li><a id="nav-galeri" onclick="navigateTo('galeri')">Galeri Tokoh</a></li>
-            <li><a id="nav-kuis" onclick="navigateTo('kuis')">Kuis Interaktif</a></li>
-            <li><a id="nav-tentang" onclick="navigateTo('tentang')">Tentang</a></li>
-        </ul>
     </header>
 
-    <!-- Search Header Bar -->
-    <div class="search-header-bar">
-        <div class="search-box-wrapper">
-            <input type="text" id="searchInput" placeholder="KOLOM PENCARIAN NAMA PAHLAWAN" onkeyup="filterHeroes()">
-            <button onclick="executeSearch()">🔍</button>
+    <!-- HERO SECTION -->
+    <section class="hero-pattern text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/30 border border-brand-red/50 text-brand-cream text-xs font-semibold tracking-wide uppercase mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-star text-brand-gold"></i> Penghormatan Bagi Pejuang Bangsa
+            </div>
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Mengenal 5 Tokoh <br class="hidden sm:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-red-400">Pahlawan Indonesia</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed font-light">
+                Menjelajahi rekam jejak, sejarah singkat, kata mutiara, dan kisah perjuangan lima tokoh bersejarah yang membentuk Kemerdekaan Republik Indonesia.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#pahlawan" class="px-8 py-3.5 bg-brand-red hover:bg-brand-redlight text-white font-semibold rounded-full shadow-lg shadow-brand-red/40 transition-all transform hover:-translate-y-0.5">
+                    Mulai Jelajahi <i class="fa-solid fa-arrow-down ml-2 text-sm"></i>
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Content Container -->
-    <div class="main-container">
-
-        <!-- 1. HALAMAN BERANDA / GALERI -->
-        <div id="page-home" class="page-section active">
-            <h2 class="section-heading">Tokoh Pahlawan Kemerdekaan</h2>
-            <div class="heroes-grid" id="heroesGrid">
-                
-                <!-- Ir. Soekarno -->
-                <div class="hero-card" data-name="ir. soekarno soekarno presiden pertama">
-                    <div class="img-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Presiden_Sukarno_%28retouched%29.jpg" alt="Ir. Soekarno">
-                    </div>
-                    <div class="hero-name">Ir. Soekarno</div>
-                    <button class="btn-profile" onclick="openDetail('soekarno')">📖 BACA PROFIL LENGKAP</button>
-                </div>
-
-                <!-- Mohammad Hatta -->
-                <div class="hero-card" data-name="mohammad hatta bung hatta wapres pertama">
-                    <div class="img-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Mohammad_Hatta_1950.jpg" alt="Mohammad Hatta">
-                    </div>
-                    <div class="hero-name">Mohammad Hatta</div>
-                    <button class="btn-profile" onclick="openDetail('hatta')">📖 BACA PROFIL LENGKAP</button>
-                </div>
-
-                <!-- R.A. Kartini -->
-                <div class="hero-card" data-name="r.a. kartini raden ajeng kartini emansipasi">
-                    <div class="img-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/COLLECTIE_TROPENMUSEUM_Portret_van_Raden_Ajeng_Kartini_TMnr_10018776.jpg" alt="R.A. Kartini">
-                    </div>
-                    <div class="hero-name">R.A. Kartini</div>
-                    <button class="btn-profile" onclick="openDetail('kartini')">📖 BACA PROFIL LENGKAP</button>
-                </div>
-
-                <!-- Pangeran Diponegoro -->
-                <div class="hero-card" data-name="pangeran diponegoro perang jawa">
-                    <div class="img-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Raden_Saleh_-_Diponegoro_arrest.jpg" alt="Pangeran Diponegoro">
-                    </div>
-                    <div class="hero-name">Pangeran Diponegoro</div>
-                    <button class="btn-profile" onclick="openDetail('diponegoro')">📖 BACA PROFIL LENGKAP</button>
-                </div>
-
-                <!-- Cut Nyak Dien -->
-                <div class="hero-card" data-name="cut nyak dien aceh">
-                    <div class="img-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Cut_Nyak_Dhien_portrait.jpg" alt="Cut Nyak Dien">
-                    </div>
-                    <div class="hero-name">Cut Nyak Dien</div>
-                    <button class="btn-profile" onclick="openDetail('cutnyakdien')">📖 BACA PROFIL LENGKAP</button>
-                </div>
-
+    <!-- MAIN CONTENT / HEROES LIST -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow" id="pahlawan">
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-4 border-b border-slate-200">
+            <div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900">Daftar Pahlawan</h2>
+                <p class="text-sm text-slate-500 mt-1">Klik pahlawan untuk melihat profil &amp; riwayat hidup lengkap</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-2" id="filterContainer">
+                <button onclick="filterCategory('semua')" class="filter-btn active px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-brand-red text-white transition-all shadow-sm">
+                    Semua (5)
+                </button>
+                <button onclick="filterCategory('proklamator')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                    Proklamator
+                </button>
+                <button onclick="filterCategory('perjuangan')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                    Pejuang Fisik
+                </button>
+                <button onclick="filterCategory('pendidikan')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                    Pendidikan
+                </button>
             </div>
         </div>
 
-        <!-- 2. HALAMAN KUIS INTERAKTIF -->
-        <div id="page-kuis" class="page-section">
-            <h2 class="section-heading">Kuis Interaktif Pahlawan Nasional</h2>
-            <div class="quiz-card">
-                <div id="quiz-body">
-                    <div class="quiz-question-text" id="quiz-question">
-                        Pertanyaan Kuis
+        <!-- Grid Cards Pahlawan -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="heroesGrid">
+            <!-- Pahlawan Cards Rendered By JavaScript -->
+        </div>
+
+        <!-- No Results Found -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400 text-2xl mb-4">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Pahlawan tidak ditemukan</h3>
+            <p class="text-slate-500 text-sm mt-1">Coba gunakan kata kunci pencarian lain.</p>
+        </div>
+    </main>
+
+    <!-- SECTION TENTANG -->
+    <section id="tentang" class="bg-white border-t border-slate-200 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-xl z-10">
+                    <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Tentang Proyek Website</span>
+                    <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-2 mb-4 leading-tight">Siap Diunggah Langsung ke GitHub Pages</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        Website ini dibuat menggunakan HTML5, Tailwind CSS, dan JavaScript murni. Sangat ringan, terstruktur, responsif untuk perangkat mobile, serta mudah dimodifikasi sesuai kebutuhan Anda.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs sm:text-sm text-slate-400 font-medium">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> No Framework Build</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Tailwind CDN</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Fast Loading</span>
                     </div>
-                    <div class="quiz-answers-grid" id="quiz-options">
-                        <!-- Pilihan jawaban diisi oleh JavaScript -->
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                        <span id="quizResultText" style="font-weight: bold; font-size: 0.95rem;"></span>
-                        <button class="btn-action-quiz" id="quizActionBtn" onclick="checkQuizAnswer()">JAWAB</button>
-                    </div>
+                </div>
+                <div class="z-10 flex-shrink-0">
+                    <a href="https://github.com" target="_blank" class="px-8 py-4 bg-white text-slate-900 hover:bg-slate-100 font-bold rounded-2xl shadow-lg transition-all flex items-center gap-3">
+                        <i class="fa-brands fa-github text-2xl"></i> Deploy Ke GitHub
+                    </a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- 3. HALAMAN TENTANG -->
-        <div id="page-tentang" class="page-section">
-            <h2 class="section-heading">Tentang Ensiklopedia</h2>
-            <div class="about-card">
-                <h3>Ensiklopedia Pahlawan Nasional Indonesia</h3>
-                <p>Selamat datang di <strong>Ensiklopedia Pahlawan Nasional Indonesia</strong>, portal edukasi digital interaktif yang didedikasikan untuk mengenang, mempelajari, dan menghargai jasa para pahlawan bangsa.</p>
-                <p><strong>Misi Kami:</strong></p>
-                <ul>
-                    <li>Menyediakan informasi sejarah yang akurat, ringkas, dan mudah dipahami.</li>
-                    <li>Menginspirasi generasi muda melalui kisah keberanian dan perjuangan para tokoh nasional.</li>
-                    <li>Menyediakan sarana belajar interaktif melalui kuis pengetahuan sejarah.</li>
-                </ul>
-                <br>
-                <p><em>Portal ini dikembangkan untuk tujuan pendidikan dan pembelajaran sejarah Indonesia.</em></p>
-            </div>
-        </div>
-
-        <!-- 4. HALAMAN DETAIL PROFIL TOKOH -->
-        <div id="page-detail" class="page-section">
-            <button class="btn-back" onclick="navigateTo('home')">← Kembali ke Galeri</button>
-            <div class="detail-card">
-                <div class="detail-header">
-                    <img id="detailImg" src="" alt="Foto Pahlawan" class="detail-img">
-                    <div class="detail-info">
-                        <h2 id="detailTitle">Nama Pahlawan</h2>
-                        <p><strong>Tempat, Tgl Lahir:</strong> <span id="detailBirth">-</span></p>
-                        <p><strong>Peran Utama:</strong> <span id="detailRole">-</span></p>
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center text-white font-bold text-sm">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
+                    <span class="font-serif text-white font-bold tracking-wider">PAHLAWAN INDONESIA</span>
                 </div>
-                <div class="detail-section">
-                    <h4>Sejarah Perjuangan</h4>
-                    <p id="detailHistory">-</p>
-                </div>
-                <div class="detail-section">
-                    <h4>Jasa Bagi Bangsa Indonesia</h4>
-                    <p id="detailServices">-</p>
-                </div>
+                <p class="text-xs text-center md:text-right text-slate-500">
+                    &copy; 2026 Website Pahlawan Nasional Indonesia. Dibuat untuk Tujuan Edukasi &amp; Portofolio.
+                </p>
             </div>
         </div>
-
-    </div>
-
-    <!-- Floating Back to Top Button -->
-    <button class="btn-floating-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-        ↑ KEMBALI KE ATAS
-    </button>
-
-    <!-- Footer -->
-    <footer>
-        &copy; 2026 Ensiklopedia Pahlawan Nasional. Desain Modern & Responsif.
     </footer>
 
-    <!-- Interactive JavaScript -->
-    <script>
-        // Data Tokoh
-        const heroesData = {
-            soekarno: {
-                title: "Ir. Soekarno",
-                birth: "Surabaya, 6 Juni 1901",
-                role: "Proklamator Kemerdekaan & Presiden Pertama RI",
-                history: "Aktif memimpin pergerakan nasional sejak mendirikan PNI pada tahun 1927. Mengalami berbagai pengasingan oleh kolonial Belanda sebelum merumuskan Pancasila dan memproklamasikan kemerdekaan Indonesia pada 17 Agustus 1945.",
-                services: "Merumuskan Pancasila, membacakan Teks Proklamasi, dan mempersatukan seluruh wilayah Nusantara menjadi Negara Kesatuan Republik Indonesia.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/3/31/Presiden_Sukarno_%28retouched%29.jpg"
-            },
-            hatta: {
-                title: "Mohammad Hatta",
-                birth: "Bukittinggi, 12 Agustus 1902",
-                role: "Proklamator, Wakil Presiden Pertama RI & Bapak Koperasi",
-                history: "Memimpin gerakan pemuda di Eropa lewat Perhimpunan Indonesia. Menjadi pendamping setia Soekarno dalam memperjuangkan kedaulatan Indonesia lewat diplomasi tingkat internasional.",
-                services: "Mendampingi proklamasi kemerdekaan, memimpin Konferensi Meja Bundar (KMB), dan membangun fondasi ekonomi kerakyatan berbasis koperasi.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mohammad_Hatta_1950.jpg"
-            },
-            kartini: {
-                title: "R.A. Kartini",
-                birth: "Jepara, 21 April 1879",
-                role: "Pelopor Kebangkitan Perempuan & Emansipasi Wanita",
-                history: "Memperjuangkan kesetaraan gender dan hak akses pendidikan bagi perempuan pribumi melalui kumpulan surat-surat pemikirannya yang terkenal 'Habis Gelap Terbitlah Terang'.",
-                services: "Membuka jalan bagi pendidikan perempuan di Indonesia dan menginspirasi kesetaraan hak wanita di era modern.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/2/23/COLLECTIE_TROPENMUSEUM_Portret_van_Raden_Ajeng_Kartini_TMnr_10018776.jpg"
-            },
-            diponegoro: {
-                title: "Pangeran Diponegoro",
-                birth: "Yogyakarta, 11 November 1785",
-                role: "Pemimpin Perang Jawa (1825–1830)",
-                history: "Memimpin perlawanan besar-besaran melawan pemerintah kolonial Hindia Belanda yang mencoba merusak adat dan tanah leluhurnya di Jawa Tengah.",
-                services: "Menerapkan strategi perang gerilya yang membuat penjajah Belanda kewalahan dan menghabiskan sumber daya kolonial secara signifikan.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Raden_Saleh_-_Diponegoro_arrest.jpg"
-            },
-            cutnyakdien: {
-                title: "Cut Nyak Dien",
-                birth: "Lampadang, Aceh, 1848",
-                role: "Pahlawan Nasional dari Aceh",
-                history: "Gigih memimpin pasukan gerilya di pedalaman hutan Aceh melawan agresi militer Belanda selama bertahun-tahun demi mempertahankan tanah air.",
-                services: "Menjadi simbol keberanian, keuletan, dan keteguhan sikap pantang menyerah bagi generasi penerus bangsa.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Cut_Nyak_Dhien_portrait.jpg"
-            }
-        };
+    <!-- MODAL DETAIL PAHLAWAN -->
+    <div id="heroModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl transform transition-all my-8 relative flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header / Image Banner -->
+            <div class="relative h-64 sm:h-80 bg-slate-800 flex-shrink-0">
+                <img id="modalImg" src="" alt="Foto Pahlawan" class="w-full h-full object-cover object-top opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                
+                <!-- Close Button -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 text-white hover:bg-brand-red flex items-center justify-center transition-colors backdrop-blur-md">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
 
-        // Data Kuis
-        const quizQuestions = [
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span id="modalCategory" class="px-3 py-1 bg-brand-gold/90 text-slate-900 text-xs font-bold uppercase rounded-full tracking-wider mb-2 inline-block">
+                        Kategori
+                    </span>
+                    <h2 id="modalName" class="font-serif text-2xl sm:text-4xl font-bold">Nama Pahlawan</h2>
+                    <p id="modalRole" class="text-sm sm:text-base text-slate-300 font-medium mt-1">Peran Utama</p>
+                </div>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 flex-grow">
+                
+                <!-- Metadata Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs sm:text-sm">
+                    <div>
+                        <span class="block text-slate-400 font-medium">Lahir</span>
+                        <strong id="modalBirth" class="text-slate-800 font-semibold">-</strong>
+                    </div>
+                    <div>
+                        <span class="block text-slate-400 font-medium">Wafat</span>
+                        <strong id="modalDeath" class="text-slate-800 font-semibold">-</strong>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <span class="block text-slate-400 font-medium">Asal Daerah</span>
+                        <strong id="modalOrigin" class="text-slate-800 font-semibold">-</strong>
+                    </div>
+                </div>
+
+                <!-- Kutipan Mutiara -->
+                <div class="border-l-4 border-brand-red pl-4 py-2 italic text-slate-700 bg-red-50/50 rounded-r-xl">
+                    <p class="text-sm sm:text-base font-serif" id="modalQuote">"Kutipan mutiara pahlawan..."</p>
+                </div>
+
+                <!-- Biografi Singkat -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 font-serif flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-brand-red text-sm"></i> Biografi Singkat
+                    </h3>
+                    <p id="modalBio" class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
+                        Penjelasan biografi pahlawan...
+                    </p>
+                </div>
+
+                <!-- Perjuangan & Jasa -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 font-serif flex items-center gap-2">
+                        <i class="fa-solid fa-award text-brand-gold text-sm"></i> Perjuangan &amp; Jasa Utama
+                    </h3>
+                    <ul id="modalAchievements" class="space-y-2 text-sm text-slate-600">
+                        <!-- Items Loaded Dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end flex-shrink-0">
+                <button onclick="closeModal()" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium rounded-xl text-sm transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT DATA & LOGIC -->
+    <script>
+        // Data 5 Pahlawan Indonesia dengan Link Gambar Langsung Muncul
+        const heroes = [
             {
-                question: "Siapakah pahlawan yang dikenal sebagai 'Bapak Proklamator' Indonesia?",
-                options: [
-                    { text: "Ir. Soekarno", correct: true },
-                    { text: "Pangeran Diponegoro", correct: false },
-                    { text: "R.A. Kartini", correct: false },
-                    { text: "Cut Nyak Dien", correct: false }
+                id: 'soekarno',
+                name: 'Ir. Soekarno',
+                role: 'Presiden Pertama RI & Proklamator Kemerdekaan',
+                category: 'proklamator',
+                categoryLabel: 'Proklamator',
+                birth: 'Surabaya, 6 Juni 1901',
+                death: 'Jakarta, 21 Juni 1970',
+                origin: 'Jawa Timur',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Presiden_Sukarno.jpg/500px-Presiden_Sukarno.jpg',
+                quote: 'Gantungkan cita-citamu setinggi langit! Bermimpilah setinggi langit. Jika engkau jatuh, engkau akan jatuh di antara bintang-bintang.',
+                bio: 'Ir. Soekarno adalah Presiden pertama Republik Indonesia yang menjabat pada periode 1945–1967. Beliau merupakan pejuang pergerakan kemerdekaan yang memainkan peranan sentral dalam membebaskan bangsa Indonesia dari penjajahan Belanda.\n\nBersama Mohammad Hatta, beliau memproklamasikan Kemerdekaan Indonesia pada tanggal 17 Agustus 1945. Soekarno juga tercatat sebagai pencetus konsep Pancasila sebagai dasar negara Indonesia.',
+                achievements: [
+                    'Merumuskan konsep dasar negara yakni Pancasila (1945).',
+                    'Membacakan Teks Proklamasi Kemerdekaan Republik Indonesia.',
+                    'Pelopor Konferensi Asia-Afrika (KAA) di Bandung tahun 1955.',
+                    'Pemimpin Gerakan Non-Blok (GNB) tingkat dunia.'
                 ]
             },
             {
-                question: "Siapakah pahlawan wanita dari Aceh yang gigih melawan penjajah Belanda?",
-                options: [
-                    { text: "R.A. Kartini", correct: false },
-                    { text: "Cut Nyak Dien", correct: true },
-                    { text: "Fatmawati", correct: false },
-                    { text: "Dewi Sartika", correct: false }
+                id: 'hatta',
+                name: 'Dr. (H.C.) Drs. H. Mohammad Hatta',
+                role: 'Wakil Presiden Pertama RI & Bapak Koperasi',
+                category: 'proklamator',
+                categoryLabel: 'Proklamator',
+                birth: 'Bukittinggi, 12 Agustus 1902',
+                death: 'Jakarta, 14 Maret 1980',
+                origin: 'Sumatera Barat',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/VP_Hatta.jpg/500px-VP_Hatta.jpg',
+                quote: 'Hanya ada satu tanah air yang bernama Tanah Air Indonesia. Tanah air ini dibangun dengan perbuatan, dan perbuatan itu adalah perbuatan kita.',
+                bio: 'Mohammad Hatta, atau populer disapa Bung Hatta, adalah negarawan dan ekonom terkemuka Indonesia. Beliau menjabat sebagai Wakil Presiden Indonesia pertama mendampingi Soekarno.\n\nBung Hatta dikenal sangat disiplin, gemar membaca, dan memiliki komitmen tinggi terhadap kesejahteraan rakyat kecil melalui gerakan koperasi sehingga dianugerahi gelar Bapak Koperasi Indonesia.',
+                achievements: [
+                    'Mendampingi Ir. Soekarno menandatangani & memproklamasikan Kemerdekaan RI.',
+                    'Memimpin Delegasi Indonesia dalam Konferensi Meja Bundar (KMB) di Den Haag (1949).',
+                    'Meletakkan pondasi ekonomi kerakyatan melalui Koperasi.',
+                    'Penulis produktif karya-karya kebangsaan dan ekonomi.'
                 ]
             },
             {
-                question: "Siapakah tokoh yang dijuluki sebagai 'Bapak Koperasi Indonesia'?",
-                options: [
-                    { text: "Ir. Soekarno", correct: false },
-                    { text: "Mohammad Hatta", correct: true },
-                    { text: "Ki Hajar Dewantara", correct: false },
-                    { text: "Sutan Sjahrir", correct: false }
+                id: 'cut-nyak-dien',
+                name: 'Cut Nyak Dien',
+                role: 'Pahlawan Nasional dari Aceh',
+                category: 'perjuangan',
+                categoryLabel: 'Pejuang Fisik',
+                birth: 'Lampadang, Aceh, 1848',
+                death: 'Sumedang, 6 November 1908',
+                origin: 'Aceh',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cut_Nyak_Dhien.jpg/500px-Cut_Nyak_Dhien.jpg',
+                quote: 'Dalam menghadapi musuh, kita tidak boleh gentar sedikitpun. Selama darah masih mengalir, perjuangan belum usai!',
+                bio: 'Cut Nyak Dien adalah seorang pahlawan nasional Indonesia wanita yang berasal dari Aceh. Beliau memimpin pasukan gerilya melawan tentara kolonial Belanda selama Perang Aceh.\n\nSetalah suaminya Teuku Umar gugur dalam pertempuran, Cut Nyak Dien melanjutkan kepemimpinan perlawanan gerilya di pedalaman Aceh meskipun kondisinya semakin rentan dan matanya terganggu.',
+                achievements: [
+                    'Memimpin perang gerilya menentang penjajahan Belanda di Aceh.',
+                    'Menjadi simbol keberanian dan kegigihan prajurit wanita Nusantara.',
+                    'Tetap konsisten menolak menyerah kepada kolonial hingga akhir hayatnya.'
+                ]
+            },
+            {
+                id: 'diponegoro',
+                name: 'Pangeran Diponegoro',
+                role: 'Pemimpin Perang Jawa (1825–1830)',
+                category: 'perjuangan',
+                categoryLabel: 'Pejuang Fisik',
+                birth: 'Yogyakarta, 11 November 1785',
+                death: 'Makassar, 8 Januari 1855',
+                origin: 'D.I. Yogyakarta',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Pangeran_Diponegoro.jpg/500px-Pangeran_Diponegoro.jpg',
+                quote: 'Sedikitpun kita tidak boleh tunduk pada kezaliman. Kehormatan dan tanah air adalah harga mati.',
+                bio: 'Pangeran Diponegoro adalah putra sulung Sultan Hamengkubuwono III. Beliau memimpin Perang Jawa (1825–1830) melawan pemerintah Hindia Belanda.\n\nPerang ini tercatat sebagai salah satu pertempuran terbesar dan paling banyak menelan korban di pihak Belanda sepanjang sejarah kolonialisme di pulau Jawa.',
+                achievements: [
+                    'Memimpin perlawanan berskala besar dalam Perang Jawa.',
+                    'Menerapkan taktik gerilya yang menyulitkan militer Belanda.',
+                    'Penulis "Babad Diponegoro" yang diakui Memory of the World oleh UNESCO.'
+                ]
+            },
+            {
+                id: 'ki-hadjar',
+                name: 'Ki Hadjar Dewantara',
+                role: 'Bapak Pendidikan Nasional Indonesia',
+                category: 'pendidikan',
+                categoryLabel: 'Pendidikan',
+                birth: 'Yogyakarta, 2 Mei 1889',
+                death: 'Yogyakarta, 26 April 1959',
+                origin: 'D.I. Yogyakarta',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ki_Hadjar_Dewantara_near_1950.jpg/500px-Ki_Hadjar_Dewantara_near_1950.jpg',
+                quote: 'Ing Ngarso Sung Tulodo, Ing Madyo Mangun Karso, Tut Wuri Handayani. (Di depan memberi teladan, di tengah memberi semangat, di belakang memberi dorongan).',
+                bio: 'Ki Hadjar Dewantara (bernama asli Raden Mas Soewardi Soeryaningrat) adalah pelopor pendidikan bagi kaum pribumi Indonesia pada masa penjajahan Belanda.\n\nBeliau mendirikan lembaga pendidikan Taman Siswa pada tahun 1922 yang memberikan kesempatan belajar bagi rakyat biasa. Hari kelahirannya, 2 Mei, diperingati sebagai Hari Pendidikan Nasional di Indonesia.',
+                achievements: [
+                    'Pendiri Perguruan Taman Siswa (1922).',
+                    'Menteri Pendidikan, Pengajaran, dan Kebudayaan Indonesia pertama.',
+                    'Pencetus semboyan pendidikan "Tut Wuri Handayani".',
+                    'Pendiri organisasi pergerakan "Indische Partij".'
                 ]
             }
         ];
 
-        let currentQuizIndex = 0;
-        let selectedOptionIndex = null;
+        // Render Cards Pahlawan
+        function renderHeroes(data) {
+            const grid = document.getElementById('heroesGrid');
+            const noResults = document.getElementById('noResults');
 
-        // Navigasi Halaman
-        function navigateTo(pageId) {
-            // Update Active Link Navigasi
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            const activeNav = document.getElementById('nav-' + (pageId === 'galeri' ? 'galeri' : pageId));
-            if (activeNav) activeNav.classList.add('active');
-
-            // Hide All Pages
-            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
-
-            // Show Selected Page
-            if (pageId === 'home' || pageId === 'galeri') {
-                document.getElementById('page-home').classList.add('active');
-            } else if (pageId === 'kuis') {
-                document.getElementById('page-kuis').classList.add('active');
-                loadQuizQuestion();
-            } else if (pageId === 'tentang') {
-                document.getElementById('page-tentang').classList.add('active');
-            }
-
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        // Buka Profil Detail
-        function openDetail(heroKey) {
-            const data = heroesData[heroKey];
-            if (!data) return;
-
-            document.getElementById('detailTitle').innerText = data.title;
-            document.getElementById('detailBirth').innerText = data.birth;
-            document.getElementById('detailRole').innerText = data.role;
-            document.getElementById('detailHistory').innerText = data.history;
-            document.getElementById('detailServices').innerText = data.services;
-            document.getElementById('detailImg').src = data.img;
-
-            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
-            document.getElementById('page-detail').classList.add('active');
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        // Pencarian Nama Pahlawan
-        function filterHeroes() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.hero-card');
-
-            cards.forEach(card => {
-                const searchData = card.getAttribute('data-name').toLowerCase();
-                if (searchData.includes(input)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function executeSearch() {
-            navigateTo('home');
-            filterHeroes();
-        }
-
-        // Logika Kuis
-        function loadQuizQuestion() {
-            const quiz = quizQuestions[currentQuizIndex];
-            document.getElementById('quiz-question').innerText = `Soal ${currentQuizIndex + 1}: ${quiz.question}`;
-            
-            const optionsContainer = document.getElementById('quiz-options');
-            optionsContainer.innerHTML = '';
-            selectedOptionIndex = null;
-            document.getElementById('quizResultText').innerText = '';
-            document.getElementById('quizActionBtn').innerText = 'JAWAB';
-            document.getElementById('quizActionBtn').setAttribute('onclick', 'checkQuizAnswer()');
-
-            quiz.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'quiz-option-btn';
-                btn.innerText = opt.text;
-                btn.onclick = function() {
-                    document.querySelectorAll('.quiz-option-btn').forEach(b => b.classList.remove('selected'));
-                    btn.classList.add('selected');
-                    selectedOptionIndex = idx;
-                };
-                optionsContainer.appendChild(btn);
-            });
-        }
-
-        function checkQuizAnswer() {
-            const resultText = document.getElementById('quizResultText');
-            if (selectedOptionIndex === null) {
-                resultText.style.color = 'orange';
-                resultText.innerText = 'PILIH SALAH SATU JAWABAN!';
+            if (data.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
                 return;
             }
 
-            const currentQuiz = quizQuestions[currentQuizIndex];
-            if (currentQuiz.options[selectedOptionIndex].correct) {
-                resultText.style.color = 'green';
-                resultText.innerText = '✅ JAWABAN BENAR!';
+            noResults.classList.add('hidden');
+            grid.innerHTML = data.map(hero => `
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group transform hover:-translate-y-1">
+                    <div class="relative h-72 overflow-hidden bg-slate-100">
+                        <img src="${hero.image}" alt="${hero.name}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-sm">
+                            ${hero.categoryLabel}
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors line-clamp-1">${hero.name}</h3>
+                        <p class="text-xs font-semibold text-brand-gold mt-1 mb-3">${hero.role}</p>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-6 flex-grow leading-relaxed">
+                            "${hero.quote}"
+                        </p>
+                        <button onclick="openModal('${hero.id}')" class="w-full py-3 bg-slate-100 hover:bg-brand-red hover:text-white text-slate-800 font-semibold text-sm rounded-xl transition-colors duration-200 flex items-center justify-center gap-2">
+                            Lihat Profil Lengkap <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Kategori
+        function filterCategory(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-600');
+            event.target.classList.add('bg-brand-red', 'text-white', 'shadow-sm');
+
+            if (cat === 'semua') {
+                renderHeroes(heroes);
             } else {
-                resultText.style.color = 'red';
-                resultText.innerText = '❌ JAWABAN SALAH!';
-            }
-
-            const actionBtn = document.getElementById('quizActionBtn');
-            if (currentQuizIndex < quizQuestions.length - 1) {
-                actionBtn.innerText = 'SOAL BERIKUTNYA →';
-                actionBtn.setAttribute('onclick', 'nextQuizQuestion()');
-            } else {
-                actionBtn.innerText = 'ULANGI KUIS';
-                actionBtn.setAttribute('onclick', 'resetQuiz()');
+                const filtered = heroes.filter(h => h.category === cat);
+                renderHeroes(filtered);
             }
         }
 
-        function nextQuizQuestion() {
-            currentQuizIndex++;
-            loadQuizQuestion();
+        // Feature Search
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const filtered = heroes.filter(h => 
+                h.name.toLowerCase().includes(q) || 
+                h.role.toLowerCase().includes(q) || 
+                h.origin.toLowerCase().includes(q)
+            );
+            renderHeroes(filtered);
         }
 
-        function resetQuiz() {
-            currentQuizIndex = 0;
-            loadQuizQuestion();
+        document.getElementById('searchInput').addEventListener('input', (e) => handleSearch(e.target.value));
+        document.getElementById('mobileSearchInput').addEventListener('input', (e) => handleSearch(e.target.value));
+
+        // Modal Logic
+        function openModal(id) {
+            const hero = heroes.find(h => h.id === id);
+            if (!hero) return;
+
+            document.getElementById('modalImg').src = hero.image;
+            document.getElementById('modalName').textContent = hero.name;
+            document.getElementById('modalRole').textContent = hero.role;
+            document.getElementById('modalCategory').textContent = hero.categoryLabel;
+            document.getElementById('modalBirth').textContent = hero.birth;
+            document.getElementById('modalDeath').textContent = hero.death;
+            document.getElementById('modalOrigin').textContent = hero.origin;
+            document.getElementById('modalQuote').textContent = `"${hero.quote}"`;
+            document.getElementById('modalBio').textContent = hero.bio;
+
+            const achievementsList = document.getElementById('modalAchievements');
+            achievementsList.innerHTML = hero.achievements.map(item => `
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-brand-red text-xs mt-1 flex-shrink-0"></i>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('heroModal').classList.remove('hidden');
+            document.body.classList.add('modal-active');
         }
+
+        function closeModal() {
+            document.getElementById('heroModal').classList.add('hidden');
+            document.body.classList.remove('modal-active');
+        }
+
+        // Close Modal when clicking outside
+        document.getElementById('heroModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('heroModal')) {
+                closeModal();
+            }
+        });
+
+        // Initial Render
+        renderHeroes(heroes);
     </script>
 </body>
 </html>
