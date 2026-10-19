@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust Peaks - Jelajah Pemandangan Alam</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Persija Raih Kemenangan Krusial - Persija Jakarta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset & Basic Setup */
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +14,9 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f8f9fa;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.8;
         }
 
         a {
@@ -26,343 +24,122 @@
             color: inherit;
         }
 
-        /* Header / Navbar */
         header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            background-color: #d32f2f;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .back-btn {
+            background-color: #ffca28;
+            color: #111;
+            padding: 8px 18px;
+            border-radius: 20px;
             font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
+            font-size: 13px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #2b8a9e;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
-                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
+        .article-container {
+            max-width: 850px;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 56px;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .btn-primary {
-            background-color: #2b8a9e;
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: #1f6473;
-            transform: translateY(-2px);
-        }
-
-        /* Container Section */
-        .container {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Grid Petualangan (Cards) */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: #fff;
+        .article-card {
+            background-color: #1e1e1e;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            border: 1px solid #2a2a2a;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
+        .article-img {
             width: 100%;
-            height: 220px;
+            height: 400px;
             object-fit: cover;
         }
 
-        .card-content {
-            padding: 20px;
+        .article-body {
+            padding: 35px;
         }
 
-        .card-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
+        .article-date {
+            color: #ffca28;
+            font-size: 13px;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
-        .card-content p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .card-meta {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            color: #2b8a9e;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* Destinasi Populer */
-        .destinations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .dest-item {
-            position: relative;
-            height: 250px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .dest-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .dest-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .dest-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
+        .article-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
             color: #fff;
-            font-weight: 600;
-            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.3;
         }
 
-        /* Footer */
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .article-body h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #d32f2f;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+
         footer {
-            background-color: #111;
-            color: #aaa;
-            padding: 50px 8% 20px;
-            font-size: 14px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 8px;
-        }
-
-        .copyright {
+            background-color: #0a0a0a;
+            padding: 30px 8%;
             text-align: center;
-            border-top: 1px solid #222;
-            padding-top: 20px;
             font-size: 12px;
-        }
-
-        /* Responsif */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            nav ul { display: none; } /* Bisa ditambahkan hamburger menu JS */
+            color: #666;
+            margin-top: 60px;
+            border-top: 2px solid #d32f2f;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
     <header>
-        <div class="logo">WANDERLUST PEAKS</div>
-        <nav>
-            <ul>
-                <li><a href="#">Beranda</a></li>
-                <li><a href="#destinasi">Destinasi</a></li>
-                <li><a href="#petualangan">Petualangan</a></li>
-                <li><a href="#">Panduan</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </nav>
+        <span class="logo-text">PERSIJA JAKARTA</span>
+        <a href="index.html" class="back-btn">&larr; Kembali ke Beranda</a>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Jelajahi Keindahan Alam</h1>
-        <p>Perjalanan tak terlupakan melintasi pegunungan, danau Kristal, dan keajaiban alam terbaik di dunia.</p>
-        <a href="#destinasi" class="btn-primary">Eksplorasi Destinasi</a>
-    </section>
+    <main class="article-container">
+        <div class="article-card">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Kemenangan Persija" class="article-img">
+            
+            <article class="article-body">
+                <p class="article-date">Diterbitkan: 15 OKTOBER 2026 | Kategori: Berita Tim</p>
+                <h1 class="article-title">Persija Raih Kemenangan Krusial di Laga Kandang GBK</h1>
 
-    <!-- Petualangan Terbaru -->
-    <section class="container" id="petualangan">
-        <h2 class="section-title">Petualangan Terbaru</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Pendakian Andes">
-                <div class="card-content">
-                    <h3>Pendakian Pegunungan Andes</h3>
-                    <p class="card-meta">Alam | 12 Menit Membaca</p>
-                    <p>Menjelajahi jalur pegunungan yang megah dengan pemandangan lembah hijau dan udara segar yang menyegarkan.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </div>
+                <p><strong>JAKARTA</strong> — Persija Jakarta berhasil mengamankan tiga poin krusial setelah menundukkan tamunya dalam laga sengit di Stadion Gelora Bung Karno (GBK). Tampil di hadapan puluhan ribu Jakmania yang memadati tribun, Macan Kemayoran bermain menekan sejak peluit pertama dibunyikan.</p>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Ketenangan Danau">
-                <div class="card-content">
-                    <h3>Ketenangan Danau Alpina</h3>
-                    <p class="card-meta">Alam | 10 Menit Membaca</p>
-                    <p>Menikmati kilauan air danau yang tenang tercermin sempurna di bawah langit biru yang cerah.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </div>
+                <p>Gol pembuka tercipta pada menit ke-24 melalui skema serangan cepat dari sisi sayap. Umpan silang terukur berhasil diselesaikan dengan sundulan tajam yang mengoyak jala gawang lawan.</p>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Hutan Kabut">
-                <div class="card-content">
-                    <h3>Pesonanya Hutan Berkabut</h3>
-                    <p class="card-meta">Petualangan | 8 Menit Membaca</p>
-                    <p>Menjelajahi keindahan rahasia di dalam hutan rindang dengan suasana magis di pagi hari.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </div>
+                <h3>Dominasi Pertandingan di Babak Kedua</h3>
+                <p>Memasuki babak kedua, lawan mencoba bangkit dan meningkatkan intensitas serangan. Namun, barisan pertahanan Persija yang disiplin serta penampilan gemilang penjaga gawang berhasil mentahlan semua peluang emas lawan.</p>
+
+                <p>Kemenangan ini membawa Persija mengukuhkan posisinya di papan atas klasemen sementara dan semakin memperbesar peluang berebut gelar juara musim ini.</p>
+            </article>
         </div>
-    </section>
+    </main>
 
-    <!-- Destinasi Populer -->
-    <section class="container" id="destinasi">
-        <h2 class="section-title">Destinasi Populer</h2>
-        <div class="destinations-grid">
-            <div class="dest-item">
-                <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=500&q=80" alt="Pegunungan Alps">
-                <div class="dest-overlay">Alps Swiss</div>
-            </div>
-            <div class="dest-item">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Pantai Tropis">
-                <div class="dest-overlay">Pantai Eksotis</div>
-            </div>
-            <div class="dest-item">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80" alt="Himalaya">
-                <div class="dest-overlay">Himalaya</div>
-            </div>
-            <div class="dest-item">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80" alt="Langit Malam">
-                <div class="dest-overlay">Aurora Borealis</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Wanderlust Peaks</h4>
-                <p>Panduan lengkap perjalanan dan pemandangan alam terbaik di seluruh dunia.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Navigasi</h4>
-                <ul>
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#destinasi">Destinasi</a></li>
-                    <li><a href="#petualangan">Petualangan</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Kontak</h4>
-                <p>info@wanderlustpeaks.com</p>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2026 Wanderlust Peaks. Seluruh Hak Cipta Dilindungi.
-        </div>
+        &copy; 2026 Persija Jakarta Fan Portal. Seluruh Hak Cipta Dilindungi.
     </footer>
 
 </body>
