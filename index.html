@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peak Expeditions - Jelajahi Keindahan Alam</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Wanderlust Peaks - Jelajah Pemandangan Alam</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* RESET & GENERAL STYLES */
+        /* Reset & Basic Setup */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             color: #333;
+            line-height: 1.6;
             background-color: #f8f9fa;
         }
 
@@ -28,9 +26,9 @@
             color: inherit;
         }
 
-        /* NAVIGATION BAR */
+        /* Header / Navbar */
         header {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -38,62 +36,41 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: 0.3s;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
             font-weight: 700;
             color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            color: #2ec4b6;
+            letter-spacing: 2px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
         }
 
-        nav ul li a {
+        nav a {
             color: #fff;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.3s;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #2ec4b6;
+        nav a:hover {
+            color: #2b8a9e;
         }
 
-        .btn-nav {
-            background-color: #2ec4b6;
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-nav:hover {
-            background-color: #20968b;
-            transform: translateY(-2px);
-        }
-
-        /* HERO SECTION */
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
-                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -104,59 +81,52 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            letter-spacing: 3px;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 650px;
+            font-size: 18px;
+            max-width: 600px;
             margin-bottom: 30px;
-            color: #e0e0e0;
             font-weight: 300;
         }
 
-        .btn-hero {
-            background-color: #2ec4b6;
+        .btn-primary {
+            background-color: #2b8a9e;
             color: #fff;
             padding: 14px 32px;
             border-radius: 30px;
-            font-size: 1rem;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+            font-size: 15px;
+            transition: background 0.3s, transform 0.2s;
         }
 
-        .btn-hero:hover {
-            background-color: #20968b;
-            transform: translateY(-3px);
+        .btn-primary:hover {
+            background-color: #1f6473;
+            transform: translateY(-2px);
         }
 
-        /* DESTINATIONS SECTION */
-        .destinations {
-            padding: 80px 8%;
-            text-align: center;
+        /* Container Section */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            color: #0f172a;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .section-subtitle {
-            color: #64748b;
-            margin-bottom: 50px;
-            font-size: 1rem;
-        }
-
-        .cards-container {
+        /* Grid Petualangan (Cards) */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
@@ -164,165 +134,236 @@
 
         .card {
             background: #fff;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
         }
 
-        .card-img {
-            height: 220px;
+        .card img {
             width: 100%;
+            height: 220px;
             object-fit: cover;
         }
 
         .card-content {
-            padding: 25px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            padding: 20px;
         }
 
         .card-content h3 {
-            font-size: 1.3rem;
-            color: #0f172a;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             margin-bottom: 10px;
         }
 
         .card-content p {
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        .btn-card {
-            align-self: flex-start;
-            background-color: #0f172a;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: 0.3s;
+        .card-meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 15px;
         }
 
-        .btn-card:hover {
-            background-color: #2ec4b6;
+        .read-more {
+            color: #2b8a9e;
+            font-weight: 600;
+            font-size: 14px;
         }
 
-        /* FOOTER */
-        footer {
-            background-color: #0f172a;
-            color: #94a3b8;
-            padding: 60px 8% 30px;
-        }
-
-        .footer-container {
+        /* Destinasi Populer */
+        .destinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .dest-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dest-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .dest-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .dest-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 50px 8% 20px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
             margin-bottom: 40px;
         }
 
-        .footer-col h4 {
+        .footer-section h4 {
             color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .footer-col ul {
+        .footer-section ul {
             list-style: none;
         }
 
-        .footer-col ul li {
-            margin-bottom: 12px;
+        .footer-section ul li {
+            margin-bottom: 8px;
         }
 
-        .footer-col ul li a {
-            transition: 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: #2ec4b6;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            background: #2ec4b6;
-        }
-
-        .footer-bottom {
+        .copyright {
             text-align: center;
+            border-top: 1px solid #222;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
+            font-size: 12px;
         }
 
-        /* RESPONSIVE DESIGN */
+        /* Responsif */
         @media (max-width: 768px) {
-            header {
-                padding: 15px 5%;
-            }
-
-            nav {
-                display: none; /* Bisa dikembangkan dengan hamburger menu */
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
+            .hero h1 { font-size: 36px; }
+            nav ul { display: none; } /* Bisa ditambahkan hamburger menu JS */
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- Navigation Header -->
     <header>
-        <div class="logo">
-            <i class="fa-solid => fa-mountain-sun"></i> PEAK EXPEDITIONS
-        </div>
+        <div class="logo">WANDERLUST PEAKS</div>
         <nav>
             <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#destinations">Destinasi</a></li>
-                <li><a href="#about">Tentang Kami</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#destinasi">Destinasi</a></li>
+                <li><a href="#petualangan">Petualangan</a></li>
+                <li><a href="#">Panduan</a></li>
+                <li><a href="#">Blog</a></li>
             </ul>
         </nav>
-        <a href="#booking" class="btn-nav">Pesan Sekarang</a>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <h1>Jelaj
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Jelajahi Keindahan Alam</h1>
+        <p>Perjalanan tak terlupakan melintasi pegunungan, danau Kristal, dan keajaiban alam terbaik di dunia.</p>
+        <a href="#destinasi" class="btn-primary">Eksplorasi Destinasi</a>
+    </section>
+
+    <!-- Petualangan Terbaru -->
+    <section class="container" id="petualangan">
+        <h2 class="section-title">Petualangan Terbaru</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Pendakian Andes">
+                <div class="card-content">
+                    <h3>Pendakian Pegunungan Andes</h3>
+                    <p class="card-meta">Alam | 12 Menit Membaca</p>
+                    <p>Menjelajahi jalur pegunungan yang megah dengan pemandangan lembah hijau dan udara segar yang menyegarkan.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Ketenangan Danau">
+                <div class="card-content">
+                    <h3>Ketenangan Danau Alpina</h3>
+                    <p class="card-meta">Alam | 10 Menit Membaca</p>
+                    <p>Menikmati kilauan air danau yang tenang tercermin sempurna di bawah langit biru yang cerah.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Hutan Kabut">
+                <div class="card-content">
+                    <h3>Pesonanya Hutan Berkabut</h3>
+                    <p class="card-meta">Petualangan | 8 Menit Membaca</p>
+                    <p>Menjelajahi keindahan rahasia di dalam hutan rindang dengan suasana magis di pagi hari.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinasi Populer -->
+    <section class="container" id="destinasi">
+        <h2 class="section-title">Destinasi Populer</h2>
+        <div class="destinations-grid">
+            <div class="dest-item">
+                <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=500&q=80" alt="Pegunungan Alps">
+                <div class="dest-overlay">Alps Swiss</div>
+            </div>
+            <div class="dest-item">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Pantai Tropis">
+                <div class="dest-overlay">Pantai Eksotis</div>
+            </div>
+            <div class="dest-item">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80" alt="Himalaya">
+                <div class="dest-overlay">Himalaya</div>
+            </div>
+            <div class="dest-item">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80" alt="Langit Malam">
+                <div class="dest-overlay">Aurora Borealis</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Wanderlust Peaks</h4>
+                <p>Panduan lengkap perjalanan dan pemandangan alam terbaik di seluruh dunia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#destinasi">Destinasi</a></li>
+                    <li><a href="#petualangan">Petualangan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak</h4>
+                <p>info@wanderlustpeaks.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Wanderlust Peaks. Seluruh Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+</body>
+</html>
