@@ -74,12 +74,9 @@
             <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-600">
                 <a href="#pahlawan" class="hover:text-brand-red transition-colors">Daftar Pahlawan</a>
                 <a href="#tentang" class="hover:text-brand-red transition-colors">Tentang Website</a>
-                <a href="https://github.com" target="_blank" class="px-5 py-2.5 bg-brand-red text-white rounded-full hover:bg-brand-redlight transition-all shadow-md shadow-brand-red/20 flex items-center gap-2">
-                    <i class="fa-brands fa-github text-base"></i> GitHub Pages
-                </a>
             </nav>
 
-            <!-- Mobile Menu Button (Dengan Efek Warna Merah Saat Diklik) -->
+            <!-- Mobile Menu Button -->
             <button id="menuBtn" onclick="toggleMenu()" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:text-brand-red hover:bg-red-50 focus:outline-none transition-all">
                 <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
             </button>
@@ -94,7 +91,7 @@
             </div>
         </div>
 
-        <!-- Mobile Dropdown Navigation (Berisi Navigasi & Daftar Nama Pahlawan) -->
+        <!-- Mobile Dropdown Navigation -->
         <div id="mobileMenu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-slate-200 shadow-xl lg:hidden">
             <div class="px-4 py-4 space-y-4">
                 <!-- Menu Navigasi Utama -->
@@ -113,13 +110,6 @@
                     <div id="mobileHeroList" class="space-y-1">
                         <!-- Di-generate otomatis oleh JavaScript -->
                     </div>
-                </div>
-
-                <!-- Tombol GitHub -->
-                <div class="pt-2">
-                    <a href="https://github.com" target="_blank" class="w-full py-3 bg-brand-red text-white rounded-xl hover:bg-brand-redlight transition-all shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 text-sm font-semibold">
-                        <i class="fa-brands fa-github text-base"></i> GitHub Pages
-                    </a>
                 </div>
             </div>
         </div>
@@ -189,23 +179,18 @@
     <!-- SECTION TENTANG -->
     <section id="tentang" class="bg-white border-t border-slate-200 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="max-w-xl z-10">
+            <div class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
+                <div class="max-w-2xl z-10">
                     <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Tentang Proyek Website</span>
-                    <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-2 mb-4 leading-tight">Siap Diunggah Langsung ke GitHub Pages</h2>
+                    <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-2 mb-4 leading-tight">Edukasi Sejarah Pahlawan Nasional</h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-                        Website ini dibuat menggunakan HTML5, Tailwind CSS, dan JavaScript murni. Sangat ringan, terstruktur, responsif untuk perangkat mobile, serta mudah dimodifikasi sesuai kebutuhan Anda.
+                        Website ini dibuat menggunakan HTML5, Tailwind CSS, dan JavaScript murni. Sangat ringan, terstruktur, responsif untuk perangkat mobile, serta mudah dimodifikasi sesuai kebutuhan pembelajaran.
                     </p>
-                    <div class="flex items-center gap-4 text-xs sm:text-sm text-slate-400 font-medium">
+                    <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-400 font-medium">
                         <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> No Framework Build</span>
                         <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Tailwind CDN</span>
                         <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-green-400"></i> Fast Loading</span>
                     </div>
-                </div>
-                <div class="z-10 flex-shrink-0">
-                    <a href="https://github.com" target="_blank" class="px-8 py-4 bg-white text-slate-900 hover:bg-slate-100 font-bold rounded-2xl shadow-lg transition-all flex items-center gap-3">
-                        <i class="fa-brands fa-github text-2xl"></i> Deploy Ke GitHub
-                    </a>
                 </div>
             </div>
         </div>
@@ -358,7 +343,7 @@
                 origin: 'Aceh',
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Z7EpGXwpIghnUBP25yfV14Eg5eaqbvOaAw&st',
                 quote: 'Dalam menghadapi musuh, kita tidak boleh gentar sedikitpun. Selama darah masih mengalir, perjuangan belum usai!',
-                bio: 'Cut Nyak Dien adalah seorang pahlawan nasional Indonesia wanita yang berasal dari Aceh. Beliau memimpin pasukan gerilya melawan tentara kolonial Belanda selama Perang Aceh.\n\nSetalah suaminya Teuku Umar gugur dalam pertempuran, Cut Nyak Dien melanjutkan kepemimpinan perlawanan gerilya di pedalaman Aceh meskipun kondisinya semakin rentan dan matanya terganggu.',
+                bio: 'Cut Nyak Dien adalah seorang pahlawan nasional Indonesia wanita yang berasal dari Aceh. Beliau memimpin pasukan gerilya melawan tentara kolonial Belanda selama Perang Aceh.\n\nSetelah suaminya Teuku Umar gugur dalam pertempuran, Cut Nyak Dien melanjutkan kepemimpinan perlawanan gerilya di pedalaman Aceh meskipun kondisinya semakin rentan dan matanya terganggu.',
                 achievements: [
                     'Memimpin perang gerilya menentang penjajahan Belanda di Aceh.',
                     'Menjadi simbol keberanian dan kegigihan prajurit wanita Nusantara.',
@@ -530,14 +515,14 @@
             document.body.classList.remove('modal-active');
         }
 
-        // Close Modal when clicking outside
-        document.getElementById('heroModal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('heroModal')) {
+        // Tutup modal jika area gelap di luar modal diklik
+        document.getElementById('heroModal').addEventListener('click', function(e) {
+            if (e.target === this) {
                 closeModal();
             }
         });
 
-        // Initial Render
+        // Render awal saat halaman dibuka
         renderHeroes(heroes);
     </script>
 </body>
