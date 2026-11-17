@@ -123,10 +123,10 @@
                 <i class="fa-solid fa-star text-brand-gold"></i> Penghormatan Bagi Pejuang Bangsa
             </div>
             <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                Mengenal 5 Tokoh <br class="hidden sm:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-red-400">Pahlawan Indonesia</span>
+                Mengenal 10 Tokoh <br class="hidden sm:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-red-400">Pahlawan Indonesia</span>
             </h1>
             <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed font-light">
-                Menjelajahi rekam jejak, sejarah singkat, kata mutiara, dan kisah perjuangan lima tokoh bersejarah yang membentuk Kemerdekaan Republik Indonesia.
+                Menjelajahi rekam jejak, sejarah singkat, kata mutiara, dan kisah perjuangan sepuluh tokoh bersejarah yang membentuk Kemerdekaan Republik Indonesia.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#pahlawan" class="px-8 py-3.5 bg-brand-red hover:bg-brand-redlight text-white font-semibold rounded-full shadow-lg shadow-brand-red/40 transition-all transform hover:-translate-y-0.5">
@@ -147,16 +147,16 @@
             
             <div class="flex flex-wrap gap-2" id="filterContainer">
                 <button onclick="filterCategory('semua', this)" class="filter-btn active px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-brand-red text-white transition-all shadow-sm">
-                    Semua (5)
+                    Semua (10)
                 </button>
                 <button onclick="filterCategory('proklamator', this)" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
-                    Proklamator
+                    Proklamator & Politik
                 </button>
                 <button onclick="filterCategory('perjuangan', this)" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
                     Pejuang Fisik
                 </button>
                 <button onclick="filterCategory('pendidikan', this)" class="filter-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
-                    Pendidikan
+                    Pendidikan & Sosial
                 </button>
             </div>
         </div>
@@ -292,14 +292,14 @@
 
     <!-- JAVASCRIPT DATA & LOGIC -->
     <script>
-        // Data 5 Pahlawan Indonesia
+        // Data 10 Pahlawan Indonesia
         const heroes = [
             {
                 id: 'soekarno',
                 name: 'Ir. Soekarno',
                 role: 'Presiden Pertama RI & Proklamator Kemerdekaan',
                 category: 'proklamator',
-                categoryLabel: 'Proklamator',
+                categoryLabel: 'Proklamator & Politik',
                 birth: 'Surabaya, 6 Juni 1901',
                 death: 'Jakarta, 21 Juni 1970',
                 origin: 'Jawa Timur',
@@ -318,7 +318,7 @@
                 name: 'Dr. (H.C.) Drs. H. Mohammad Hatta',
                 role: 'Wakil Presiden Pertama RI & Bapak Koperasi',
                 category: 'proklamator',
-                categoryLabel: 'Proklamator',
+                categoryLabel: 'Proklamator & Politik',
                 birth: 'Bukittinggi, 12 Agustus 1902',
                 death: 'Jakarta, 14 Maret 1980',
                 origin: 'Sumatera Barat',
@@ -373,7 +373,7 @@
                 name: 'Ki Hadjar Dewantara',
                 role: 'Bapak Pendidikan Nasional Indonesia',
                 category: 'pendidikan',
-                categoryLabel: 'Pendidikan',
+                categoryLabel: 'Pendidikan & Sosial',
                 birth: 'Yogyakarta, 2 Mei 1889',
                 death: 'Yogyakarta, 26 April 1959',
                 origin: 'D.I. Yogyakarta',
@@ -385,6 +385,96 @@
                     'Menteri Pendidikan, Pengajaran, dan Kebudayaan Indonesia pertama.',
                     'Pencetus semboyan pendidikan "Tut Wuri Handayani".',
                     'Pendiri organisasi pergerakan "Indische Partij".'
+                ]
+            },
+            {
+                id: 'sutan-sjahrir',
+                name: 'Sutan Sjahrir',
+                role: 'Perdana Menteri Pertama RI & Tokoh Diplomat Ulung',
+                category: 'perjuangan',
+                categoryLabel: 'Pejuang Fisik',
+                birth: 'Padang Panjang, Sumatera Barat, 5 Maret 1909',
+                death: 'Zürich, Swiss, 9 April 1966',
+                origin: 'Sumatera Barat',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Sutan_Sjahrir_Official_Portrait.jpg/500px-Sutan_Sjahrir_Official_Portrait.jpg',
+                quote: 'Hidup yang tidak dipertaruhkan tidak akan pernah dimenangkan.',
+                bio: 'Sutan Sjahrir adalah seorang politikus dan perdana Menteri pertama Republik Indonesia. Beliau dikenal sebagai intelektual ulung yang memimpin pergerakan bawah tanah melawan fasisme Jepang, serta menjadi juru runding tangguh dalam diplomasi internasional untuk mempertahankan kemerdekaan Indonesia.',
+                achievements: [
+                    'Perdana Menteri termuda dan pertama Republik Indonesia (1945–1947).',
+                    'Pelopor pergerakan bawah tanah anti-fasis selama pendudukan Jepang.',
+                    'Berperan besar memenangkan simpati PBB dan dunia internasional melalui jalur diplomasi.'
+                ]
+            },
+            {
+                id: 'martha-christina',
+                name: 'Martha Christina Tiahahu',
+                role: 'Pahlawan Nasional Perempuan Pemberani dari Maluku',
+                category: 'perjuangan',
+                categoryLabel: 'Pejuang Fisik',
+                birth: 'Nusalaut, Maluku, 4 Januari 1900',
+                death: 'Laut Banda, Maluku, 2 Januari 1918',
+                origin: 'Maluku',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Martha_Christina_Tiahahu.jpg/500px-Martha_Christina_Tiahahu.jpg',
+                quote: 'Para wanita Maluku harus ikut mengangkat senjata membela kehormatan tanah air.',
+                bio: 'Martha Christina Tiahahu adalah gadis remaja asal Maluku yang mengangkat senjata dan turut serta memimpin pertempuran melawan pasukan kolonial Belanda di Pulau Saparua pada usia 17 tahun. Keteguhan dan keberaniannya menjadikannya salah satu srikandi kebanggaan Indonesia.',
+                achievements: [
+                    'Ikut bertempur secara langsung mendampingi Kapitan Pattimura melawan Belanda.',
+                    'Simbol emansipasi dan keberanian pemudi Nusantara dalam perang kemerdekaan.',
+                    'Ditetapkan sebagai Pahlawan Nasional termuda di Indonesia.'
+                ]
+            },
+            {
+                id: 'jenderal-soedirman',
+                name: 'Jenderal Soedirman',
+                role: 'Panglima Besar TNI Pertama & Pejuang Gerilya',
+                category: 'perjuangan',
+                categoryLabel: 'Pejuang Fisik',
+                birth: 'Bodas, Purbalingga, 24 Januari 1916',
+                death: 'Magelang, 29 Januari 1950',
+                origin: 'Jawa Tengah',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jenderal_Sudirman.jpg/500px-Jenderal_Sudirman.jpg',
+                quote: 'Tentara bukan merupakan suatu golongan di luar masyarakat, bukan suatu kasta yang berdiri sendiri. Tentara tidak lain dan tidak bukan ialah anak kandung rakyat.',
+                bio: 'Jenderal Soedirman adalah perwira tinggi militer Indonesia pada masa Revolusi Nasional. Sebagai Panglima Besar Tentara Nasional Indonesia pertama, beliau memimpin perang gerilya melawan agresi militer Belanda meski dalam kondisi paru-paru yang sakit parah.',
+                achievements: [
+                    'Memimpin perang gerilya keluar-masuk hutan saat Agresi Militer Belanda II.',
+                    'Menjadi Panglima Besar TNI pertama Republik Indonesia.',
+                    'Menjadi teladan integritas moral, loyalitas, dan kedisiplinan militer.'
+                ]
+            },
+            {
+                id: 'hos-tjokroaminoto',
+                name: 'H.O.S. Tjokroaminoto',
+                role: 'Guru Bangsa & Pemimpin Sarekat Islam',
+                category: 'pendidikan',
+                categoryLabel: 'Pendidikan & Sosial',
+                birth: 'Ponorogo, Jawa Timur, 16 Agustus 1882',
+                death: 'Yogyakarta, 17 Desember 1934',
+                origin: 'Jawa Timur',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/H._O._S._Tjokroaminoto.jpg/500px-H._O._S._Tjokroaminoto.jpg',
+                quote: 'Setinggi-tinggi ilmu, semurni-murni tauhid, sedalam-dalam siasat.',
+                bio: 'Hadji Oemar Said Tjokroaminoto, atau lebih dikenal sebagai H.O.S. Tjokroaminoto, adalah pemimpin organisasi Sarekat Islam. Rumahnya di Surabaya sering dijadikan tempat tinggal para tokoh nasional dari berbagai ideologi (seperti Soekarno, Semaun, dan Musso) untuk belajar berpolitik.',
+                achievements: [
+                    'Pemimpin besar Sarekat Islam yang memobilisasi kesadaran politik rakyat jelata.',
+                    'Dijuluki sebagai "Guru Bangsa" karena mencetak pemimpin-pemimpin besar Indonesia.',
+                    'Pelopor pergerakan nasional modern berbasis kebangsaan dan keislaman.'
+                ]
+            },
+            {
+                id: 'mohammad-yamin',
+                name: 'Mohammad Yamin',
+                role: 'Pahlawan Nasional, Sastrawan, & Perumus Sumpah Pemuda',
+                category: 'proklamator',
+                categoryLabel: 'Proklamator & Politik',
+                birth: 'Talawi, Sawahlunto, 24 Agustus 1903',
+                death: 'Jakarta, 17 Oktober 1962',
+                origin: 'Sumatera Barat',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Mohammad_Yamin_Official_Portrait.jpg/500px-Mohammad_Yamin_Official_Portrait.jpg',
+                quote: 'Cita-cita persatuan Indonesia itu bukan angan-angan kosong, melainkan keharusan sejarah.',
+                bio: 'Mohammad Yamin adalah sastrawan, sejarawan, budayawan, sekaligus politikus terkemuka. Beliau merupakan salah satu tokoh kunci dalam Kongres Pemuda II yang melahirkan ikrar Sumpah Pemuda pada tahun 1928, serta aktif merumuskan dasar negara Pancasila.',
+                achievements: [
+                    'Penggagas dan perumus teks Sumpah Pemuda 28 Oktober 1928.',
+                    'Aktif merumuskan dasar negara dalam Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan (BPUPK).',
+                    'Pelopor kebangkitan sastra modern Indonesia (Pujangga Baru).'
                 ]
             }
         ];
